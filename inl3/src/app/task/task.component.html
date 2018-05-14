@@ -1,0 +1,65 @@
+<div class="task"
+     [class.notStarted]="task.status == 'Not Started'"
+     [class.inProgress]="task.status == 'In Progress'"
+     [class.completed]="task.status == 'Completed'"
+>
+  <div class="header">
+      <div>
+        <!-- Render title here... -->
+        <h3> {{ task.title }}</h3>
+      </div>
+      <!-- Markup for dropdown menu here... -->
+    <select
+      id="selectStatusType"
+      name="selectStatusType"
+
+      ngModel="{{task.status}}"
+      #selectStatusType="ngModel"
+
+      ng-init="option[0]"
+
+      (change)="updateTask(selectStatusType.value)"
+    >
+      <option
+        *ngFor="let statusType of statusTypes"
+
+      >
+        {{statusType}}
+      </option>
+    </select>
+  </div>
+  <hr>
+  <div class="body">
+      <!-- Render description here... -->
+    <p> {{ task.description}}</p>
+  </div>
+
+  <div
+    class="footer"
+    *ngIf="task.status == 'Completed'"
+  >
+    <button
+      class="btn btn-danger btn-sm"
+      (click)="updateTask('delete')"
+    >Delete completed task?</button>
+  </div>
+</div>
+
+
+    <!--<select-->
+      <!--name="taskStatusSelector"-->
+      <!--id="taskStatusSelector"-->
+      <!--ngModel="{{task.status}}"-->
+      <!--#taskStatusSelector="ngModel"-->
+      <!---->
+
+    <!--&gt;-->
+      <!--<option *ngFor="let statusType of statusTypes" (click)="updateTask(taskStatusSelector.value)">{{statusType}}</option>-->
+    <!--</select>-->
+  <!--</div>-->
+  <!--<hr>-->
+  <!--<div class="body">-->
+    <!--"{{ task.description }}"-->
+  <!--</div>-->
+  <!---->
+<!--</div>-->

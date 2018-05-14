@@ -1,0 +1,16 @@
+
+<div class="header">
+  {{statusType}}
+</div>
+
+<task
+  *ngFor="let task of taskList"
+  [task]="task"
+  (changedStatus)="updateTask($event)"
+>
+
+</task>
+
+
+<!-- Markup for displaying all tasks that have the status type of this list set... -->
+
